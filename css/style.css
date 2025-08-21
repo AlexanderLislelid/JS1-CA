@@ -1,0 +1,30 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.container {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+}
+.card {
+  display: flex;
+  flex-direction: column;
+  max-width: 80%;
+  margin: 2rem;
+  padding: 1rem;
+  border: 1px solid black;
+  border-radius: 5px;
+  background-color: greenyellow;
+}
+.card img {
+  max-width: 100%;
+}
+.product-details img,
+h2,
+p,
+a {
+  max-width: 80%;
+  margin: 1rem;
+}

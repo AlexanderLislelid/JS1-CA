@@ -1,16 +1,14 @@
-h1,
-h2,
-h3,
-h4,
-a {
-  font-family: "montserrat", sans-serif;
-}
-a {
-  text-decoration: none;
-  color: inherit;
-}
-p,
-ul,
-li {
-  font-family: "inter", sans-serif;
+:root {
+  --color-bg: #1c1f26;
+  --color-card: #2a2e38;
+  --color-text: #e8e8ea;
+  --color-muted: #9aa0a6;
+  --color-buttons: #107c10;
+  --color-price: #4caf50;
+  --color-sale: #e53935;
+  --color-cyan-glow: #00e5ff;
+  --color-neon: #39ff14;
+
+  --font-heading: "montserrat", sans-serif;
+  --font-body: "inter", sans-serif;
 }

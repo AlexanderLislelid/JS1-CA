@@ -4,19 +4,86 @@
   box-sizing: border-box;
 }
 
+body {
+  max-width: 1200px;
+  margin: 0 auto;
+  background-color: var(--color-bg);
+}
+
+/*--------Fonts-----------*/
+
+h1,
+h2,
+h3,
+h4,
+a {
+  font-family: var(--font-heading);
+}
+a {
+  text-decoration: none;
+  color: inherit;
+}
+p,
+ul,
+li {
+  font-family: var(--font-body);
+  list-style: none;
+}
+
+/*--------Navbar-----------*/
+
+.navbar ul {
+  display: flex;
+  flex-direction: row;
+  gap: 2rem;
+  color: var(--color-text);
+  font-weight: 500;
+  font-size: 1.2rem;
+}
+.navbar {
+  margin-top: 1rem;
+  padding: 2rem;
+  background-color: var(--color-card);
+}
+/*--------Hero section-----------*/
+
+.hero {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  justify-content: center;
+  align-items: center;
+  gap: 3rem;
+  color: var(--color-text);
+}
+.hero img {
+  max-width: 100%;
+}
+
+/*--------Game Container-----------*/
+
+.container > * {
+  min-width: 0;
+}
 .container {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
+  gap: 2rem;
 }
+
+/*--------Cards-----------*/
+
 .card {
   display: flex;
   flex-direction: column;
-  max-width: 80%;
-  margin: 2rem;
-  padding: 1rem;
+  max-width: 100%;
   border: 1px solid black;
-  border-radius: 5px;
-  background-color: greenyellow;
+  border-radius: 10px;
+  background-color: var(--color-card);
+}
+.card {
+  display: flex;
+  align-items: center;
+  text-align: center;
 }
 .card img {
   max-width: 100%;
@@ -25,6 +92,15 @@
 h2,
 p,
 a {
-  max-width: 80%;
-  margin: 1rem;
+  max-width: 100%;
+  margin: 1rem 0;
+}
+
+/*--------Media Queries-------------*/
+
+@media (max-width: 740px) {
+  .container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
 }

@@ -73,6 +73,15 @@ li {
   border-radius: 10px;
 }
 /*--------Filters-----------*/
+.filterheading {
+  color: var(--color-text);
+  background-color: var(--color-card);
+}
+.filterheading h2 {
+  padding: 5px;
+  margin-left: 3rem;
+  font-weight: 400;
+}
 .filter-buttons {
   padding: 10px;
   background-color: var(--color-buttons);
@@ -104,10 +113,9 @@ li {
   background-color: var(--color-card);
   color: var(--color-text);
 }
-.card-price {
+.sale-price {
   color: var(--color-price);
 }
-
 .card img {
   max-width: 100%;
   border-top-left-radius: 10px;

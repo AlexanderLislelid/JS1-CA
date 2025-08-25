@@ -22,14 +22,30 @@ function renderGames(games, container) {
 
     img.src = product.image?.url || "";
     img.alt = product.image?.alt || product.title || "Game image";
-    title.textContent = product.title ?? "Untitled";
-    price.textContent = product.price != null ? `${product.price} €` : "—";
-    genre.textContent = product.genre ?? "Unknown";
+    title.textContent = product.title;
+    price.textContent = `${product.price} €`;
+    genre.textContent = product.genre;
     anchor.href = `product/index.html?id=${product.id}`;
 
-    content.append(title, price, genre);
+    content.append(title, genre, price);
     card.append(img, content);
     anchor.appendChild(card);
+
+    if (product.onSale === true) {
+      const salePrice = document.createElement("div");
+      const oldPrice = document.createElement("div");
+
+      oldPrice.textContent = `${product.price} €`;
+      oldPrice.style.textDecoration = "line-through";
+      oldPrice.style.color = "#9aa0a6";
+
+      salePrice.textContent = `${product.discountedPrice} €`;
+      salePrice.className = "sale-price";
+
+      price.textContent = "";
+      price.appendChild(oldPrice);
+      price.appendChild(salePrice);
+    }
 
     container.appendChild(anchor);
   });
@@ -71,6 +87,11 @@ async function fetchAndCreateFilteredGames(selectedGenre) {
     console.log(error);
   }
 }
+
+let filterHeading = document.getElementById("filter-heading");
+
+filterHeading.textContent = "";
+
 const noFilter = document.getElementById("filter-all");
 const actionFilter = document.getElementById("filter-action");
 const sportsFilter = document.getElementById("filter-sports");
@@ -79,16 +100,21 @@ const horrorFilter = document.getElementById("filter-horror");
 
 noFilter.addEventListener("click", () => {
   fetchAndCreateGames();
+  filterHeading.textContent = "All Games";
 });
 actionFilter.addEventListener("click", () => {
   filterGamesByGenre("action");
+  filterHeading.textContent = "Action";
 });
 sportsFilter.addEventListener("click", () => {
   filterGamesByGenre("sports");
+  filterHeading.textContent = "Sports";
 });
 adventureFilter.addEventListener("click", () => {
   filterGamesByGenre("adventure");
+  filterHeading.textContent = "Adventure";
 });
 horrorFilter.addEventListener("click", () => {
   filterGamesByGenre("horror");
+  filterHeading.textContent = "Horror";
 });

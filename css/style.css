@@ -72,6 +72,12 @@ li {
   background-color: var(--color-buttons);
   border-radius: 10px;
 }
+/*--------Filters-----------*/
+.filter-buttons {
+  padding: 10px;
+  background-color: var(--color-buttons);
+}
+
 /*--------Game Container-----------*/
 
 .container > * {

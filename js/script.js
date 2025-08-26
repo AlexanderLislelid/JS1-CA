@@ -1,5 +1,6 @@
 const container = document.querySelector("#container");
 const API_URL = "https://v2.api.noroff.dev/gamehub";
+import { toNok } from "./math.js";
 
 function renderGames(games, container) {
   container.innerHTML = "";
@@ -20,10 +21,10 @@ function renderGames(games, container) {
     price.className = "card-price";
     genre.className = "card-genre";
 
-    img.src = product.image?.url || "";
-    img.alt = product.image?.alt || product.title || "Game image";
+    img.src = product.image.url;
+    img.alt = product.image.alt;
     title.textContent = product.title;
-    price.textContent = `${product.price} €`;
+    price.textContent = toNok(product.price);
     genre.textContent = product.genre;
     anchor.href = `product/index.html?id=${product.id}`;
 
@@ -35,11 +36,11 @@ function renderGames(games, container) {
       const salePrice = document.createElement("div");
       const oldPrice = document.createElement("div");
 
-      oldPrice.textContent = `${product.price} €`;
+      oldPrice.textContent = toNok(product.price);
       oldPrice.style.textDecoration = "line-through";
       oldPrice.style.color = "#9aa0a6";
 
-      salePrice.textContent = `${product.discountedPrice} €`;
+      salePrice.textContent = toNok(product.discountedPrice);
       salePrice.className = "sale-price";
 
       price.textContent = "";
@@ -118,3 +119,5 @@ horrorFilter.addEventListener("click", () => {
   filterGamesByGenre("horror");
   filterHeading.textContent = "Horror";
 });
+
+//-------------------------Cart

@@ -103,4 +103,10 @@ function applyFilter() {
   }
 }
 
-//-------------------------Cart
+//-------------------------Add to cart function
+const openCart = document.querySelector(".shopping-cart");
+const cart = [];
+
+console.log(openCart);
+
+//legg til spel i arrayet med id og pris? antall?

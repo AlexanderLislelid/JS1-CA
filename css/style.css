@@ -67,7 +67,7 @@ li {
   padding-bottom: 5rem;
   margin-bottom: 3rem;
   text-align: center;
-  background-image: url(/images/hero-background-compressed.jpg);
+  background-image: url(../images/hero-background-compressed.jpg);
   background-position: center;
   background-size: cover;
 }

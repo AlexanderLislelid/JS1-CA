@@ -138,10 +138,23 @@ label {
 }
 .product-details img,
 h2,
-p,
-a {
-  max-width: 100%;
-  margin: 1rem 0;
+p {
+  margin: 1rem;
+}
+
+.cart-button {
+  margin-bottom: 0.5rem;
+  height: 1.5rem;
+  width: 3.5rem;
+  color: var(--color-text);
+  background-color: var(--color-bg);
+  border: 2px solid var(--color-price);
+  border-radius: 10px;
+}
+.cart-button:hover {
+  border: 2px solid var(--color-bg);
+  background-color: var(--color-price);
+  cursor: pointer;
 }
 .product-details,
 h2 {

@@ -13,6 +13,9 @@ function renderGames(games, container) {
     const price = document.createElement("p");
     const genre = document.createElement("p");
     const anchor = document.createElement("a");
+    const buyNow = document.createElement("div");
+    const cartBtn = document.createElement("button");
+    const icon = document.createElement("i");
 
     card.className = "card";
     img.className = "card-img";
@@ -20,6 +23,9 @@ function renderGames(games, container) {
     title.className = "card-title";
     price.className = "card-price";
     genre.className = "card-genre";
+    cartBtn.className = "cart-button";
+    icon.className = "fa-solid fa-plus";
+    buyNow.className = "btn-container";
 
     img.src = product.image.url;
     img.alt = product.image.alt;
@@ -28,9 +34,14 @@ function renderGames(games, container) {
     genre.textContent = product.genre;
     anchor.href = `product/index.html?id=${product.id}`;
 
+    anchor.append(img);
     content.append(title, genre, price);
-    card.append(img, content);
-    anchor.appendChild(card);
+    anchor.append(content);
+
+    buyNow.appendChild(cartBtn);
+    cartBtn.appendChild(icon);
+
+    card.append(anchor, buyNow);
 
     if (product.onSale === true) {
       const salePrice = document.createElement("div");
@@ -48,7 +59,7 @@ function renderGames(games, container) {
       price.appendChild(salePrice);
     }
 
-    container.appendChild(anchor);
+    container.appendChild(card);
   });
 }
 
@@ -104,9 +115,5 @@ function applyFilter() {
 }
 
 //-------------------------Add to cart function
-const openCart = document.querySelector(".shopping-cart");
-const cart = [];
-
-console.log(openCart);
 
 //legg til spel i arrayet med id og pris? antall?

@@ -25,24 +25,34 @@ a {
 }
 p,
 ul,
+label,
 li {
   font-family: var(--font-body);
   list-style: none;
 }
 
 /*--------Navbar-----------*/
-
+.logo {
+  max-width: 100px;
+}
+.navbar {
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: space-between;
+  align-items: center;
+}
 .navbar ul {
   display: flex;
   flex-direction: row;
-  gap: 2rem;
+  gap: 3rem;
   color: var(--color-text);
   font-weight: 500;
   font-size: 1.2rem;
 }
 .navbar {
-  margin-top: 1rem;
-  padding: 2rem;
+  padding-left: 2rem;
+  padding-right: 2rem;
+
   background-color: var(--color-card);
 }
 .active {
@@ -50,41 +60,45 @@ li {
   text-underline-offset: 5px;
 }
 /*--------Hero section-----------*/
-
 .hero {
-  display: grid;
-  grid-template-columns: 1fr 2fr;
-  justify-content: center;
-  align-items: center;
-  gap: 3rem;
+  height: 30vh;
   color: var(--color-text);
+  padding-top: 2rem;
+  padding-bottom: 5rem;
+  margin-bottom: 3rem;
+  text-align: center;
+  background-image: url(/images/hero-background-compressed.jpg);
+  background-position: center;
+  background-size: cover;
 }
-.hero img {
-  max-width: 100%;
-}
-.herotext {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-.category-button {
-  padding: 1rem;
-  background-color: var(--color-buttons);
-  border-radius: 10px;
+.hero h1 {
+  font-size: 3rem;
+  text-shadow: 0 0 8px var(--color-neon), 0 0 16px var(--color-bg),
+    0 0 16px var(--color-bg);
 }
 /*--------Filters-----------*/
-.filterheading {
-  color: var(--color-text);
-  background-color: var(--color-card);
-}
-.filterheading h2 {
-  padding: 5px;
+
+.genre-form {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.5rem;
   margin-left: 3rem;
-  font-weight: 400;
 }
-.filter-buttons {
-  padding: 10px;
-  background-color: var(--color-buttons);
+.genre-form select {
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  padding: 0.5rem;
+  border: 2px solid var(--color-neon);
+  border-radius: 10px;
+  font-size: 1rem;
+  margin-bottom: 2rem;
+}
+
+.genre-select,
+label {
+  font-size: 1.2rem;
+  color: var(--color-text);
 }
 
 /*--------Game Container-----------*/
@@ -94,7 +108,8 @@ li {
 }
 .container {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  grid-template-columns: repeat(auto-fill, 200px);
+  justify-content: center;
   gap: 3rem;
   margin-left: 3rem;
   margin-right: 3rem;
@@ -128,6 +143,11 @@ a {
   max-width: 100%;
   margin: 1rem 0;
 }
+.product-details,
+h2 {
+  font-size: 1.2rem;
+  font-weight: 600;
+}
 /*--------Footer-------------*/
 
 footer {
@@ -154,5 +174,12 @@ footer {
   .container {
     display: grid;
     grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 450px) {
+  .container {
+    display: flex;
+    flex-direction: column;
   }
 }

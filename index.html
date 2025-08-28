@@ -42,38 +42,44 @@
   <body>
     <header>
       <nav class="navbar">
-        <ul>
-          <li><a href="index.html" class="active">Home</a></li>
-          <li><a href="./profile/index.html">My Profile</a></li>
-          <li>
-            <a href="./checkout/index.html"
-              ><i class="fa-solid fa-cart-shopping"></i
-            ></a>
-          </li>
-        </ul>
+        <div>
+          <ul>
+            <li><a href="index.html" class="active">Home</a></li>
+            <li><a href="./profile/index.html">My Profile</a></li>
+            <li>
+              <a href="./checkout/index.html"
+                ><i class="fa-solid fa-cart-shopping"></i
+              ></a>
+            </li>
+          </ul>
+        </div>
+        <div>
+          <a href="index.html"
+            ><img src="images/gamehub-logo.png" class="logo"
+          /></a>
+        </div>
       </nav>
     </header>
     <main>
-      <div class="hero">
-        <img src="images/gamehub-logo.png" />
-        <div class="herotext">
-          <h1>Your Digital Game Store</h1>
-          <p>
-            Discover the latest titles, timeless classics, and exclusive deals –
-            all in one place.
-          </p>
+      <section class="hero">
+        <h1>Your Digital Game Store</h1>
+        <p>
+          Discover the latest titles, timeless classics, and exclusive deals –
+          all in one place.
+        </p>
+      </section>
+      <form id="filters">
+        <div class="genre-form">
+          <label for="genre-select" class="genre-select">Filter Games:</label>
+          <select id="genre-select">
+            <option value="all">All games</option>
+            <option value="action">Action</option>
+            <option value="adventure">Adventure</option>
+            <option value="horror">Horror</option>
+            <option value="sports">Sports</option>
+          </select>
         </div>
-      </div>
-      <div class="filters">
-        <button id="filter-all" class="filter-buttons">Show all games</button>
-        <button id="filter-action" class="filter-buttons">action</button>
-        <button id="filter-sports" class="filter-buttons">sports</button>
-        <button id="filter-adventure" class="filter-buttons">adventure</button>
-        <button id="filter-horror" class="filter-buttons">horror</button>
-      </div>
-      <div class="filterheading">
-        <h2 id="filter-heading"></h2>
-      </div>
+      </form>
       <div id="container" class="container"></div>
     </main>
     <footer>

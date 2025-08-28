@@ -52,6 +52,8 @@ function renderGames(games, container) {
   });
 }
 
+let allGames = [];
+
 async function fetchAndCreateGames() {
   try {
     container.innerHTML = "";
@@ -59,6 +61,7 @@ async function fetchAndCreateGames() {
     const data = await response.json();
     const games = data.data;
 
+    allGames = games; // Store games for filtering
     renderGames(games, container);
   } catch (error) {
     console.log(error);
@@ -69,55 +72,35 @@ fetchAndCreateGames();
 
 //----------------------Sorting function
 
-function filterGamesByGenre(selectedGenre) {
-  fetchAndCreateFilteredGames(selectedGenre);
+const filterForm = document.getElementById("filters");
+const select = document.getElementById("genre-select");
+
+if (filterForm) {
+  filterForm.addEventListener("submit", (event) => {
+    event.preventDefault();
+    applyFilter();
+  });
 }
+select.addEventListener("change", applyFilter);
 
-async function fetchAndCreateFilteredGames(selectedGenre) {
-  try {
-    const response = await fetch(API_URL);
-    const data = await response.json();
-    const games = data.data;
+function applyFilter() {
+  const chosen = select.value;
+  if (chosen === "all") {
+    renderGames(allGames, container);
+  } else {
+    const filtered = allGames.filter(function (game) {
+      if (!game.genre) {
+        return false;
+      }
 
-    const filteredGames = games.filter(
-      (game) => game.genre?.toLowerCase() === selectedGenre.toLowerCase()
-    );
+      if (game.genre.toLowerCase() === chosen.toLowerCase()) {
+        return true;
+      }
 
-    renderGames(filteredGames, container);
-  } catch (error) {
-    console.log(error);
+      return false;
+    });
+    renderGames(filtered, container);
   }
 }
-
-let filterHeading = document.getElementById("filter-heading");
-
-filterHeading.textContent = "";
-
-const noFilter = document.getElementById("filter-all");
-const actionFilter = document.getElementById("filter-action");
-const sportsFilter = document.getElementById("filter-sports");
-const adventureFilter = document.getElementById("filter-adventure");
-const horrorFilter = document.getElementById("filter-horror");
-
-noFilter.addEventListener("click", () => {
-  fetchAndCreateGames();
-  filterHeading.textContent = "All Games";
-});
-actionFilter.addEventListener("click", () => {
-  filterGamesByGenre("action");
-  filterHeading.textContent = "Action";
-});
-sportsFilter.addEventListener("click", () => {
-  filterGamesByGenre("sports");
-  filterHeading.textContent = "Sports";
-});
-adventureFilter.addEventListener("click", () => {
-  filterGamesByGenre("adventure");
-  filterHeading.textContent = "Adventure";
-});
-horrorFilter.addEventListener("click", () => {
-  filterGamesByGenre("horror");
-  filterHeading.textContent = "Horror";
-});
 
 //-------------------------Cart

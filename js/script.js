@@ -41,6 +41,12 @@ function renderGames(games, container) {
     buyNow.appendChild(cartBtn);
     cartBtn.appendChild(icon);
 
+    // Add event listener for this card's cart button
+    cartBtn.addEventListener("click", (event) => {
+      event.preventDefault();
+      addToCart(product);
+    });
+
     card.append(anchor, buyNow);
 
     if (product.onSale === true) {
@@ -114,6 +120,70 @@ function applyFilter() {
   }
 }
 
-//-------------------------Add to cart function
+//--------Open cart
 
-//legg til spel i arrayet med id og pris? antall?
+const showCart = document.querySelector(".show-cart");
+const closeCart = document.querySelector(".close-cart");
+const cartContainer = document.querySelector(".cart-container");
+const cartItems = document.querySelector(".item-list");
+
+showCart.addEventListener("click", () => {
+  cartContainer.style.inset = "0 0 0 auto";
+});
+closeCart.addEventListener("click", () => {
+  cartContainer.style.inset = "0 -400px 0 auto";
+});
+
+//-------------------------Add to cart function
+let cart = [];
+function addToCart(product) {
+  const existingItem = cart.find((item) => item.id === product.id);
+  if (existingItem) {
+    existingItem.quantity++;
+  } else {
+    cart.push({
+      ...product,
+      quantity: 1,
+      name: product.title,
+      price: product.price,
+      img: product.image.url,
+    });
+  }
+  updateCartDisplay();
+  cartContainer.style.inset = "0 0 0 auto";
+}
+
+function updateCartDisplay() {
+  cartItems.textContent = "";
+
+  let sum = 0;
+
+  for (let i = 0; i < cart.length; i++) {
+    const product = cart[i];
+
+    const wrapper = document.createElement("div");
+    wrapper.classList.add("cart-item");
+
+    const img = document.createElement("img");
+    img.src = product.img;
+    img.alt = product.name;
+    img.width = 80;
+
+    const text = document.createElement("p");
+    text.textContent = `${product.name} ${toNok(product.price)} x  ${
+      product.quantity
+    }`;
+
+    wrapper.appendChild(img);
+    wrapper.appendChild(text);
+    cartItems.appendChild(wrapper);
+
+    sum += product.price * product.quantity;
+  }
+
+  const total = document.createElement("p");
+
+  total.classList.add("cart-sum");
+  total.textContent = "Total: " + toNok(sum);
+  cartItems.appendChild(total);
+}

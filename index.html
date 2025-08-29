@@ -7,18 +7,7 @@
 
     <link rel="stylesheet" href="./css/style.css" />
     <link rel="stylesheet" href="./css/variables.css" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Rubik:ital,wght@0,300..900;1,300..900&family=Space+Grotesk:wght@300..700&display=swap"
-      rel="stylesheet"
-    />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Rubik:ital,wght@0,300..900;1,300..900&family=Space+Grotesk:wght@300..700&display=swap"
-      rel="stylesheet"
-    />
+    <script type="module" src="js/script.js"></script>
     <script
       src="https://kit.fontawesome.com/534136dc01.js"
       crossorigin="anonymous"
@@ -37,7 +26,6 @@
       href="images/favicon/apple-touch-icon.png"
     />
     <link rel="manifest" href="images/favicon/site.webmanifest" />
-    <script type="module" src="js/script.js"></script>
   </head>
   <body>
     <header>
@@ -47,9 +35,7 @@
             <li><a href="index.html" class="active">Home</a></li>
             <li><a href="./profile/index.html">My Profile</a></li>
             <li>
-              <a href="./checkout/index.html"
-                ><i class="fa-solid fa-cart-shopping"></i
-              ></a>
+              <a class="show-cart"><i class="fa-solid fa-cart-shopping"></i></a>
             </li>
           </ul>
         </div>
@@ -82,7 +68,14 @@
       </form>
       <div id="container" class="container"></div>
     </main>
-    <div class="shopping-cart"></div>
+    <div class="cart-container">
+      <h1>Shopping cart</h1>
+      <div class="item-list"></div>
+      <div class="cart-btn">
+        <button class="close-cart">Close</button>
+        <button class="checkout">Check out</button>
+      </div>
+    </div>
     <footer>
       <div class="footer-links">
         <a href="legal/terms/index.html">Terms and Conditions</a>

@@ -1,3 +1,5 @@
+@import "variables.css";
+
 * {
   margin: 0;
   padding: 0;
@@ -67,14 +69,68 @@ li {
   padding-bottom: 5rem;
   margin-bottom: 3rem;
   text-align: center;
-  background-image: url(/images/hero-background-compressed.jpg);
+  background-image: url(../images/hero-background-compressed.jpg);
   background-position: center;
   background-size: cover;
+  background-repeat: no-repeat;
 }
 .hero h1 {
   font-size: 3rem;
   text-shadow: 0 0 8px var(--color-neon), 0 0 16px var(--color-bg),
     0 0 16px var(--color-bg);
+}
+
+/*-------Shopping cart------*/
+
+.cart-container {
+  width: 400px;
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  position: fixed;
+  inset: 0 -400px 0 auto;
+  grid-template-rows: 70px 1fr 70px;
+  height: 70vh;
+  overflow-y: auto;
+  overflow-x: hidden;
+  scrollbar-color: var(--color-price) var(--color-bg);
+}
+
+.cart.container,
+h1 {
+  padding: 1rem;
+  margin: 0;
+  font-weight: 300;
+}
+.cart-btn {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+}
+.cart-item {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  margin: 1rem;
+}
+
+.close-cart {
+  background-color: var(--color-card);
+  color: var(--color-text);
+  border: none;
+  font-weight: 500;
+  cursor: pointer;
+}
+.checkout {
+  background-color: var(--color-price);
+  border: none;
+  padding: 20px 20px;
+  cursor: pointer;
+}
+.cart-sum {
+  background-color: var(--color-card);
+  margin: 0.8rem;
+  padding: 0.5rem;
+  text-align: center;
+
+  border: 2px solid var(--color-price);
 }
 /*--------Filters-----------*/
 
@@ -160,6 +216,24 @@ p {
 h2 {
   font-size: 1.2rem;
   font-weight: 600;
+}
+/*-----Single Products info------*/
+
+.product-image {
+  width: 40vw;
+}
+.product-details {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: var(--color-text);
+}
+.product-container {
+  margin-left: 4rem;
+  margin-right: 4rem;
+  border: 2px solid var(--color-price);
+  border-radius: 10px;
 }
 /*--------Footer-------------*/
 

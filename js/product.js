@@ -1,6 +1,6 @@
 const container = document.querySelector("#container");
 const API_URL = "https://v2.api.noroff.dev/gamehub";
-
+import { toNok } from "./math.js";
 async function fetchAndCreateGame() {
   try {
     const params = new URLSearchParams(window.location.search);
@@ -34,7 +34,7 @@ async function fetchAndCreateGame() {
     img.src = product.image.url;
     img.alt = product.image.alt;
     title.textContent = product.title;
-    price.textContent = `${product.price} €`;
+    price.textContent = `${toNok(product.price)}`;
     description.textContent = product.description;
     genre.textContent = product.genre;
     backButton.textContent = "Back to games";
